@@ -13,19 +13,17 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
+include(GoogleTest)
 
 
 enable_testing()
+
+add_library(sample1 sample1.h sample1.cc)
 
 add_executable(
   sample1_unittest
   sample1_unittest.cc
 )
-add_executable(
-    sample1
-    sample1.cc
-)
-
 
 target_link_libraries(
   sample1_unittest
@@ -33,5 +31,4 @@ target_link_libraries(
   sample1
 )
 
-include(GoogleTest)
 gtest_discover_tests(sample1_unittest)
